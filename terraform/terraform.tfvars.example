@@ -1,0 +1,22 @@
+###############################################################################
+# FiberLink Multicloud MVP
+#
+# Archivo de ejemplo para la configuración del entorno.
+#
+# Cada desarrollador podrá crear su propio archivo terraform.tfvars tomando
+# este archivo como referencia.
+###############################################################################
+
+project_name = "fiberlink"
+
+environment = "dev"
+
+azure_subscription_id = "088b9168-fdd5-4280-83de-02aaee8b9daf"
+
+azure_resource_group = "rg_Maria_Baute"
+
+azure_location = "East US"
+
+gcp_project_id = "utec-posgrado-01"
+
+gcp_region = "us-central1"
