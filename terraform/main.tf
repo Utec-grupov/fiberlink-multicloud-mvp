@@ -26,10 +26,22 @@ module "azure" {
 
 }
 
-/*
-El módulo GCP será incorporado durante la Etapa 2.3.
-
 module "gcp" {
 
+  source = "./gcp"
+
+  gcp_project_id = var.gcp_project_id
+  gcp_region     = var.gcp_region
+
+  prefix      = local.prefix
+  environment = var.environment
+
+  common_tags = local.common_tags
+
+  cloud_run_service_name = var.cloud_run_service_name
+
+  cloud_run_container_image = var.cloud_run_container_image
+
+  cloud_run_container_port = var.cloud_run_container_port
+
 }
-*/

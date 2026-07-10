@@ -49,3 +49,13 @@ sql_admin_username = "sqladmin"
 # No subir el archivo terraform.tfvars al repositorio.
 
 sql_admin_password = "CambiarPorUnaPasswordSegura123!"
+
+###############################################################################
+# Cloud Run
+###############################################################################
+
+cloud_run_service_name = "ms-eventos-negocio"
+
+cloud_run_container_image = "us-central1-docker.pkg.dev/utec-posgrado-01/flk-dev-containers/ms-eventos-negocio:1.0.0"
+
+cloud_run_container_port = 8080

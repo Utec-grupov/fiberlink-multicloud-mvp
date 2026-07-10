@@ -71,3 +71,36 @@ variable "gcp_region" {
   description = "Región Google Cloud."
   type        = string
 }
+
+###############################################################################
+# Cloud Run
+###############################################################################
+
+variable "cloud_run_service_name" {
+
+  description = "Nombre del servicio Cloud Run."
+
+  type = string
+
+  default = "ms-eventos-negocio"
+
+}
+
+variable "cloud_run_container_image" {
+
+  description = "Imagen Docker del microservicio."
+
+  type = string
+
+  default = "us-docker.pkg.dev/cloudrun/container/hello"
+}
+
+variable "cloud_run_container_port" {
+
+  description = "Puerto del contenedor."
+
+  type = number
+
+  default = 8080
+
+}

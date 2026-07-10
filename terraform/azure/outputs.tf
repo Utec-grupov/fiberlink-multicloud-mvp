@@ -112,3 +112,19 @@ output "sql_database_name" {
   value = azurerm_mssql_database.main.name
 
 }
+
+###############################################################################
+# Managed Identity
+###############################################################################
+
+output "managed_identity_id" {
+
+  value = azurerm_user_assigned_identity.mvp.id
+
+}
+
+output "managed_identity_principal_id" {
+
+  value = azurerm_user_assigned_identity.mvp.principal_id
+
+}
