@@ -1,0 +1,21 @@
+{
+  "name": "FiberLink Multicloud MVP",
+
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  "features": {
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/azure-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "HashiCorp.terraform",
+        "ms-azuretools.vscode-azureterraform"
+      ]
+    }
+  }
+}
