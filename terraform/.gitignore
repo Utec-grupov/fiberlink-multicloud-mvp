@@ -1,7 +1,9 @@
 # Terraform
 .terraform/
+
 *.tfstate
 *.tfstate.*
+
 terraform.tfvars
 
 # Logs
@@ -11,9 +13,5 @@ terraform.tfvars
 .vscode/
 .idea/
 
-# Variables
+# Variables de entorno
 .env
-
-# OS
-.DS_Store
-Thumbs.db

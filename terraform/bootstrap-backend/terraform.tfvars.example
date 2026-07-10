@@ -1,0 +1,18 @@
+###############################################################################
+# Bootstrap Backend
+#
+# Copiar este archivo como:
+#
+# terraform.tfvars
+#
+###############################################################################
+
+azure_subscription_id = "<subscription-id>"
+
+azure_resource_group = "<resource-group>"
+
+azure_location = "East US"
+
+storage_account_name = "<storage-account>"
+
+blob_container_name = "tfstate"
