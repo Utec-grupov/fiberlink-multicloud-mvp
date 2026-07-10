@@ -1,15 +1,25 @@
 ###############################################################################
 # FiberLink Multicloud MVP
+# terraform.tfvars.example
 #
-# Archivo de ejemplo para la configuración del entorno.
+# Copiar este archivo como:
 #
-# Cada desarrollador podrá crear su propio archivo terraform.tfvars tomando
-# este archivo como referencia.
+# terraform.tfvars
+#
+# y completar únicamente los valores que correspondan.
 ###############################################################################
+
+###############################
+# Proyecto
+###############################
 
 project_name = "fiberlink"
 
 environment = "dev"
+
+###############################
+# Azure
+###############################
 
 azure_subscription_id = "088b9168-fdd5-4280-83de-02aaee8b9daf"
 
@@ -17,6 +27,25 @@ azure_resource_group = "rg_Maria_Baute"
 
 azure_location = "East US"
 
+azure_log_analytics_workspace_name = "workspace-rgariaautewQvc"
+
+###############################
+# Google Cloud
+###############################
+
 gcp_project_id = "utec-posgrado-01"
 
 gcp_region = "us-central1"
+
+###############################
+# Azure SQL
+###############################
+
+# Usuario administrador del servidor SQL.
+
+sql_admin_username = "sqladmin"
+
+# Reemplazar por una contraseña segura que cumpla las políticas de Azure SQL.
+# No subir el archivo terraform.tfvars al repositorio.
+
+sql_admin_password = "CambiarPorUnaPasswordSegura123!"

@@ -14,23 +14,13 @@
 ###############################
 
 variable "project_name" {
-
   description = "Nombre del proyecto."
-
-  type = string
-
-  default = "fiberlink"
-
+  type        = string
 }
 
 variable "environment" {
-
   description = "Ambiente de despliegue."
-
-  type = string
-
-  default = "dev"
-
+  type        = string
 }
 
 ###############################
@@ -38,33 +28,34 @@ variable "environment" {
 ###############################
 
 variable "azure_subscription_id" {
-
   description = "Id de la suscripción Azure."
-
-  type = string
-
-  default = "088b9168-fdd5-4280-83de-02aaee8b9daf"
-
+  type        = string
 }
 
 variable "azure_resource_group" {
-
   description = "Resource Group existente."
-
-  type = string
-
-  default = "rg_Maria_Baute"
-
+  type        = string
 }
 
 variable "azure_location" {
-
   description = "Región Azure."
+  type        = string
+}
 
-  type = string
+variable "azure_log_analytics_workspace_name" {
+  description = "Nombre del Log Analytics Workspace existente."
+  type        = string
+}
 
-  default = "East US"
+variable "sql_admin_username" {
+  description = "Usuario administrador del servidor SQL."
+  type        = string
+}
 
+variable "sql_admin_password" {
+  description = "Contraseña del administrador SQL."
+  type        = string
+  sensitive   = true
 }
 
 ###############################
@@ -72,21 +63,11 @@ variable "azure_location" {
 ###############################
 
 variable "gcp_project_id" {
-
   description = "Proyecto Google Cloud."
-
-  type = string
-
-  default = "utec-posgrado-01"
-
+  type        = string
 }
 
 variable "gcp_region" {
-
   description = "Región Google Cloud."
-
-  type = string
-
-  default = "us-central1"
-
+  type        = string
 }

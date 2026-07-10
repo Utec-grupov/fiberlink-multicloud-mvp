@@ -8,16 +8,24 @@
 
  Responsable : OPS
 ===============================================================================
+/*
+===============================================================================
+ Outputs del proyecto
+===============================================================================
 */
 
-output "project_name" {
-
-  value = var.project_name
-
+output "azure_resource_group_name" {
+  value = module.azure.azure_resource_group_name
 }
 
-output "environment" {
+output "azure_resource_group_location" {
+  value = module.azure.azure_resource_group_location
+}
 
-  value = var.environment
+output "azure_log_analytics_workspace_name" {
+  value = module.azure.azure_log_analytics_workspace_name
+}
 
+output "azure_log_analytics_workspace_id" {
+  value = module.azure.azure_log_analytics_workspace_id
 }
