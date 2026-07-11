@@ -82,7 +82,7 @@ variable "cloud_run_service_name" {
 
   type = string
 
-  default = "ms-eventos-negocio"
+  default = "flk-dev-ms-eventos-negocio"
 
 }
 

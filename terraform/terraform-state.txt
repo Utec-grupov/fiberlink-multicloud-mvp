@@ -1,0 +1,796 @@
+# module.azure.data.azurerm_client_config.current:
+data "azurerm_client_config" "current" {
+    client_id       = "04b07795-8ddb-461a-bbee-02f9e1bf7b46"
+    id              = "Y2xpZW50Q29uZmlncy9jbGllbnRJZD0wNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDY7b2JqZWN0SWQ9YWE2YmY3YzEtMzI3Yi00OTIxLTg3ZTEtMWVjYmIyNDA1ZDcxO3N1YnNjcmlwdGlvbklkPTA4OGI5MTY4LWZkZDUtNDI4MC04M2RlLTAyYWFlZThiOWRhZjt0ZW5hbnRJZD04YTU5NjMwMS1jYTM0LTQ4NGQtYjgyMy1iMzMwMDMwZTUzOWY="
+    object_id       = "aa6bf7c1-327b-4921-87e1-1ecbb2405d71"
+    subscription_id = "088b9168-fdd5-4280-83de-02aaee8b9daf"
+    tenant_id       = "8a596301-ca34-484d-b823-b330030e539f"
+}
+
+# module.azure.data.azurerm_log_analytics_workspace.main:
+data "azurerm_log_analytics_workspace" "main" {
+    daily_quota_gb       = -1
+    id                   = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.OperationalInsights/workspaces/workspace-rgariaautewQvc"
+    location             = "eastus"
+    name                 = "workspace-rgariaautewQvc"
+    primary_shared_key   = (sensitive value)
+    resource_group_name  = "rg_Maria_Baute"
+    retention_in_days    = 30
+    secondary_shared_key = (sensitive value)
+    sku                  = "PerGB2018"
+    tags                 = {}
+    workspace_id         = "692e1024-5630-42b1-9cf0-6563882e35ca"
+}
+
+# module.azure.data.azurerm_resource_group.main:
+data "azurerm_resource_group" "main" {
+    id         = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute"
+    location   = "eastus"
+    managed_by = [90mnull[0m[0m
+    name       = "rg_Maria_Baute"
+    tags       = {}
+}
+
+# module.azure.azurerm_api_management.main:
+resource "azurerm_api_management" "main" {
+    client_certificate_enabled    = false
+    developer_portal_url          = "https://flk-dev-apim.developer.azure-api.net"
+    gateway_disabled              = false
+    gateway_regional_url          = "https://flk-dev-apim-eastus-01.regional.azure-api.net"
+    gateway_url                   = "https://flk-dev-apim.azure-api.net"
+    id                            = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ApiManagement/service/flk-dev-apim"
+    location                      = "eastus"
+    management_api_url            = "https://flk-dev-apim.management.azure-api.net"
+    min_api_version               = [90mnull[0m[0m
+    name                          = "flk-dev-apim"
+    notification_sender_email     = "apimgmt-noreply@mail.windowsazure.com"
+    portal_url                    = [90mnull[0m[0m
+    private_ip_addresses          = []
+    public_ip_address_id          = [90mnull[0m[0m
+    public_ip_addresses           = [
+        "20.242.235.79",
+    ]
+    public_network_access_enabled = true
+    publisher_email               = "grupo-v@utec.edu.pe"
+    publisher_name                = "Grupo V"
+    resource_group_name           = "rg_Maria_Baute"
+    scm_url                       = "https://flk-dev-apim.scm.azure-api.net"
+    sku_name                      = "Developer_1"
+    tags                          = {
+        "AdministradoPor" = "Terraform"
+        "Ambiente"        = "dev"
+        "Curso"           = "Arquitectura de Soluciones Multicloud"
+        "Grupo"           = "Grupo-V"
+        "Proyecto"        = "FiberLink-MVP"
+        "Responsable"     = "OPS"
+    }
+    virtual_network_type          = "None"
+
+    delegation {
+        subscriptions_enabled     = false
+        url                       = [90mnull[0m[0m
+        user_registration_enabled = false
+        validation_key            = (sensitive value)
+    }
+
+    hostname_configuration {
+        proxy {
+            certificate                     = (sensitive value)
+            certificate_password            = (sensitive value)
+            certificate_source              = "BuiltIn"
+            certificate_status              = [90mnull[0m[0m
+            default_ssl_binding             = true
+            expiry                          = [90mnull[0m[0m
+            host_name                       = "flk-dev-apim.azure-api.net"
+            key_vault_certificate_id        = [90mnull[0m[0m
+            key_vault_id                    = [90mnull[0m[0m
+            negotiate_client_certificate    = false
+            ssl_keyvault_identity_client_id = [90mnull[0m[0m
+            subject                         = [90mnull[0m[0m
+            thumbprint                      = [90mnull[0m[0m
+        }
+    }
+
+    protocols {
+        enable_http2  = false
+        http2_enabled = false
+    }
+
+    security {
+        backend_ssl30_enabled                               = false
+        backend_tls10_enabled                               = false
+        backend_tls11_enabled                               = false
+        enable_backend_ssl30                                = false
+        enable_backend_tls10                                = false
+        enable_backend_tls11                                = false
+        enable_frontend_ssl30                               = false
+        enable_frontend_tls10                               = false
+        enable_frontend_tls11                               = false
+        frontend_ssl30_enabled                              = false
+        frontend_tls10_enabled                              = false
+        frontend_tls11_enabled                              = false
+        tls_ecdhe_ecdsa_with_aes128_cbc_sha_ciphers_enabled = false
+        tls_ecdhe_ecdsa_with_aes256_cbc_sha_ciphers_enabled = false
+        tls_ecdhe_rsa_with_aes128_cbc_sha_ciphers_enabled   = false
+        tls_ecdhe_rsa_with_aes256_cbc_sha_ciphers_enabled   = false
+        tls_rsa_with_aes128_cbc_sha256_ciphers_enabled      = false
+        tls_rsa_with_aes128_cbc_sha_ciphers_enabled         = false
+        tls_rsa_with_aes128_gcm_sha256_ciphers_enabled      = false
+        tls_rsa_with_aes256_cbc_sha256_ciphers_enabled      = false
+        tls_rsa_with_aes256_cbc_sha_ciphers_enabled         = false
+        tls_rsa_with_aes256_gcm_sha384_ciphers_enabled      = false
+        triple_des_ciphers_enabled                          = false
+    }
+
+    sign_in {
+        enabled = false
+    }
+
+    sign_up {
+        enabled = false
+
+        terms_of_service {
+            consent_required = false
+            enabled          = false
+            text             = [90mnull[0m[0m
+        }
+    }
+
+    tenant_access {
+        enabled       = false
+        primary_key   = (sensitive value)
+        secondary_key = (sensitive value)
+        tenant_id     = "/tenant/access"
+    }
+}
+
+# module.azure.azurerm_container_app_environment.main:
+resource "azurerm_container_app_environment" "main" {
+    custom_domain_verification_id               = "49AF6E5AACA2FAA1C168A4852B8F252993DF89203FC1D5FB9574BBD4FD314FCD"
+    dapr_application_insights_connection_string = (sensitive value)
+    default_domain                              = "lemoncliff-5488325c.eastus.azurecontainerapps.io"
+    docker_bridge_cidr                          = [90mnull[0m[0m
+    id                                          = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.App/managedEnvironments/flk-dev-acae"
+    infrastructure_resource_group_name          = [90mnull[0m[0m
+    infrastructure_subnet_id                    = [90mnull[0m[0m
+    internal_load_balancer_enabled              = false
+    location                                    = "eastus"
+    log_analytics_workspace_id                  = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.OperationalInsights/workspaces/workspace-rgariaautewQvc"
+    logs_destination                            = "log-analytics"
+    mutual_tls_enabled                          = false
+    name                                        = "flk-dev-acae"
+    platform_reserved_cidr                      = [90mnull[0m[0m
+    platform_reserved_dns_ip_address            = [90mnull[0m[0m
+    public_network_access                       = "Enabled"
+    resource_group_name                         = "rg_Maria_Baute"
+    static_ip_address                           = "128.203.103.146"
+    tags                                        = {
+        "AdministradoPor" = "Terraform"
+        "Ambiente"        = "dev"
+        "Curso"           = "Arquitectura de Soluciones Multicloud"
+        "Grupo"           = "Grupo-V"
+        "Proyecto"        = "FiberLink-MVP"
+        "Responsable"     = "OPS"
+    }
+    zone_redundancy_enabled                     = false
+}
+
+# module.azure.azurerm_key_vault.main:
+resource "azurerm_key_vault" "main" {
+    access_policy                   = []
+    enable_rbac_authorization       = false
+    enabled_for_deployment          = false
+    enabled_for_disk_encryption     = false
+    enabled_for_template_deployment = false
+    id                              = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.KeyVault/vaults/flkdevkv"
+    location                        = "eastus"
+    name                            = "flkdevkv"
+    public_network_access_enabled   = true
+    purge_protection_enabled        = false
+    rbac_authorization_enabled      = false
+    resource_group_name             = "rg_Maria_Baute"
+    sku_name                        = "standard"
+    soft_delete_retention_days      = 7
+    tags                            = {
+        "AdministradoPor" = "Terraform"
+        "Ambiente"        = "dev"
+        "Curso"           = "Arquitectura de Soluciones Multicloud"
+        "Grupo"           = "Grupo-V"
+        "Proyecto"        = "FiberLink-MVP"
+        "Responsable"     = "OPS"
+    }
+    tenant_id                       = "8a596301-ca34-484d-b823-b330030e539f"
+    vault_uri                       = "https://flkdevkv.vault.azure.net/"
+
+    network_acls {
+        bypass                     = "AzureServices"
+        default_action             = "Allow"
+        ip_rules                   = []
+        virtual_network_subnet_ids = []
+    }
+}
+
+# module.azure.azurerm_mssql_database.main:
+resource "azurerm_mssql_database" "main" {
+    auto_pause_delay_in_minutes                                = 0
+    collation                                                  = "SQL_Latin1_General_CP1_CI_AS"
+    create_mode                                                = "Default"
+    elastic_pool_id                                            = [90mnull[0m[0m
+    enclave_type                                               = [90mnull[0m[0m
+    geo_backup_enabled                                         = true
+    id                                                         = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.Sql/servers/flk-dev-sqlsrv/databases/flk-dev-db"
+    ledger_enabled                                             = false
+    license_type                                               = [90mnull[0m[0m
+    maintenance_configuration_name                             = "SQL_Default"
+    max_size_gb                                                = 2
+    min_capacity                                               = 0
+    name                                                       = "flk-dev-db"
+    read_replica_count                                         = 0
+    read_scale                                                 = false
+    secondary_type                                             = [90mnull[0m[0m
+    server_id                                                  = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.Sql/servers/flk-dev-sqlsrv"
+    sku_name                                                   = "Basic"
+    storage_account_type                                       = "Geo"
+    tags                                                       = {
+        "AdministradoPor" = "Terraform"
+        "Ambiente"        = "dev"
+        "Curso"           = "Arquitectura de Soluciones Multicloud"
+        "Grupo"           = "Grupo-V"
+        "Proyecto"        = "FiberLink-MVP"
+        "Responsable"     = "OPS"
+    }
+    transparent_data_encryption_enabled                        = true
+    transparent_data_encryption_key_automatic_rotation_enabled = false
+    transparent_data_encryption_key_vault_key_id               = [90mnull[0m[0m
+    zone_redundant                                             = false
+
+    long_term_retention_policy {
+        immutable_backups_enabled = false
+        monthly_retention         = "PT0S"
+        week_of_year              = 1
+        weekly_retention          = "PT0S"
+        yearly_retention          = "PT0S"
+    }
+
+    short_term_retention_policy {
+        backup_interval_in_hours = 24
+        retention_days           = 7
+    }
+
+    threat_detection_policy {
+        disabled_alerts            = []
+        email_account_admins       = "Disabled"
+        email_addresses            = []
+        retention_days             = 0
+        state                      = "Disabled"
+        storage_account_access_key = (sensitive value)
+        storage_endpoint           = [90mnull[0m[0m
+    }
+}
+
+# module.azure.azurerm_mssql_firewall_rule.azure_services:
+resource "azurerm_mssql_firewall_rule" "azure_services" {
+    end_ip_address   = "0.0.0.0"
+    id               = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.Sql/servers/flk-dev-sqlsrv/firewallRules/AllowAzureServices"
+    name             = "AllowAzureServices"
+    server_id        = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.Sql/servers/flk-dev-sqlsrv"
+    start_ip_address = "0.0.0.0"
+}
+
+# module.azure.azurerm_mssql_server.main:
+resource "azurerm_mssql_server" "main" {
+    administrator_login                          = "sqladmin"
+    administrator_login_password                 = (sensitive value)
+    administrator_login_password_wo              = (write-only attribute)
+    administrator_login_password_wo_version      = 0
+    connection_policy                            = "Default"
+    express_vulnerability_assessment_enabled     = false
+    fully_qualified_domain_name                  = "flk-dev-sqlsrv.database.windows.net"
+    id                                           = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.Sql/servers/flk-dev-sqlsrv"
+    location                                     = "eastus"
+    minimum_tls_version                          = "1.2"
+    name                                         = "flk-dev-sqlsrv"
+    outbound_network_restriction_enabled         = false
+    primary_user_assigned_identity_id            = [90mnull[0m[0m
+    public_network_access_enabled                = true
+    resource_group_name                          = "rg_Maria_Baute"
+    restorable_dropped_database_ids              = []
+    tags                                         = {
+        "AdministradoPor" = "Terraform"
+        "Ambiente"        = "dev"
+        "Curso"           = "Arquitectura de Soluciones Multicloud"
+        "Grupo"           = "Grupo-V"
+        "Proyecto"        = "FiberLink-MVP"
+        "Responsable"     = "OPS"
+    }
+    transparent_data_encryption_key_vault_key_id = [90mnull[0m[0m
+    version                                      = "12.0"
+}
+
+# module.azure.azurerm_role_assignment.keyvault_secrets_user:
+resource "azurerm_role_assignment" "keyvault_secrets_user" {
+    condition                              = [90mnull[0m[0m
+    condition_version                      = [90mnull[0m[0m
+    delegated_managed_identity_resource_id = [90mnull[0m[0m
+    description                            = [90mnull[0m[0m
+    id                                     = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.KeyVault/vaults/flkdevkv/providers/Microsoft.Authorization/roleAssignments/ed0b388c-09c5-223a-92f7-47343ccc0a3f"
+    name                                   = "ed0b388c-09c5-223a-92f7-47343ccc0a3f"
+    principal_id                           = "abeacf94-c3b1-4b60-a97d-eb85ec1a8c26"
+    principal_type                         = "ServicePrincipal"
+    role_definition_id                     = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6"
+    role_definition_name                   = "Key Vault Secrets User"
+    scope                                  = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.KeyVault/vaults/flkdevkv"
+}
+
+# module.azure.azurerm_role_assignment.servicebus_receiver:
+resource "azurerm_role_assignment" "servicebus_receiver" {
+    condition                              = [90mnull[0m[0m
+    condition_version                      = [90mnull[0m[0m
+    delegated_managed_identity_resource_id = [90mnull[0m[0m
+    description                            = [90mnull[0m[0m
+    id                                     = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ServiceBus/namespaces/flk-dev-bus/providers/Microsoft.Authorization/roleAssignments/057aec8a-b8c2-7b6a-7055-729e0531b510"
+    name                                   = "057aec8a-b8c2-7b6a-7055-729e0531b510"
+    principal_id                           = "abeacf94-c3b1-4b60-a97d-eb85ec1a8c26"
+    principal_type                         = "ServicePrincipal"
+    role_definition_id                     = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/providers/Microsoft.Authorization/roleDefinitions/4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0"
+    role_definition_name                   = "Azure Service Bus Data Receiver"
+    scope                                  = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ServiceBus/namespaces/flk-dev-bus"
+}
+
+# module.azure.azurerm_role_assignment.servicebus_sender:
+resource "azurerm_role_assignment" "servicebus_sender" {
+    condition                              = [90mnull[0m[0m
+    condition_version                      = [90mnull[0m[0m
+    delegated_managed_identity_resource_id = [90mnull[0m[0m
+    description                            = [90mnull[0m[0m
+    id                                     = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ServiceBus/namespaces/flk-dev-bus/providers/Microsoft.Authorization/roleAssignments/2c71ce45-c8e7-efd1-c3aa-cf7344d0a1be"
+    name                                   = "2c71ce45-c8e7-efd1-c3aa-cf7344d0a1be"
+    principal_id                           = "abeacf94-c3b1-4b60-a97d-eb85ec1a8c26"
+    principal_type                         = "ServicePrincipal"
+    role_definition_id                     = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/providers/Microsoft.Authorization/roleDefinitions/69a216fc-b8fb-44d8-bc22-1f3c2cd27a39"
+    role_definition_name                   = "Azure Service Bus Data Sender"
+    scope                                  = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ServiceBus/namespaces/flk-dev-bus"
+}
+
+# module.azure.azurerm_servicebus_namespace.main:
+resource "azurerm_servicebus_namespace" "main" {
+    capacity                            = 0
+    default_primary_connection_string   = (sensitive value)
+    default_primary_key                 = (sensitive value)
+    default_secondary_connection_string = (sensitive value)
+    default_secondary_key               = (sensitive value)
+    endpoint                            = "https://flk-dev-bus.servicebus.windows.net:443/"
+    id                                  = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ServiceBus/namespaces/flk-dev-bus"
+    local_auth_enabled                  = true
+    location                            = "eastus"
+    minimum_tls_version                 = "1.2"
+    name                                = "flk-dev-bus"
+    premium_messaging_partitions        = 0
+    public_network_access_enabled       = true
+    resource_group_name                 = "rg_Maria_Baute"
+    sku                                 = "Standard"
+    tags                                = {
+        "AdministradoPor" = "Terraform"
+        "Ambiente"        = "dev"
+        "Curso"           = "Arquitectura de Soluciones Multicloud"
+        "Grupo"           = "Grupo-V"
+        "Proyecto"        = "FiberLink-MVP"
+        "Responsable"     = "OPS"
+    }
+
+    network_rule_set {
+        default_action                = "Allow"
+        ip_rules                      = []
+        public_network_access_enabled = true
+        trusted_services_allowed      = false
+    }
+}
+
+# module.azure.azurerm_user_assigned_identity.mvp:
+resource "azurerm_user_assigned_identity" "mvp" {
+    client_id           = "d617b69d-bf86-4882-bf03-023a03ac7c65"
+    id                  = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ManagedIdentity/userAssignedIdentities/flk-dev-identity"
+    isolation_scope     = [90mnull[0m[0m
+    location            = "eastus"
+    name                = "flk-dev-identity"
+    principal_id        = "abeacf94-c3b1-4b60-a97d-eb85ec1a8c26"
+    resource_group_name = "rg_Maria_Baute"
+    tags                = {
+        "AdministradoPor" = "Terraform"
+        "Ambiente"        = "dev"
+        "Curso"           = "Arquitectura de Soluciones Multicloud"
+        "Grupo"           = "Grupo-V"
+        "Proyecto"        = "FiberLink-MVP"
+        "Responsable"     = "OPS"
+    }
+    tenant_id           = "8a596301-ca34-484d-b823-b330030e539f"
+}
+# module.gcp.google_artifact_registry_repository.containers:
+resource "google_artifact_registry_repository" "containers" {
+    cleanup_policy_dry_run = false
+    create_time            = "2026-07-10T23:39:05.358794Z"
+    description            = "Repositorio Docker del MVP FiberLink."
+    effective_labels       = {
+        "goog-terraform-provisioned" = "true"
+    }
+    format                 = "DOCKER"
+    id                     = "projects/utec-posgrado-01/locations/us-central1/repositories/flk-dev-containers"
+    kms_key_name           = [90mnull[0m[0m
+    location               = "us-central1"
+    mode                   = "STANDARD_REPOSITORY"
+    name                   = "flk-dev-containers"
+    project                = "utec-posgrado-01"
+    repository_id          = "flk-dev-containers"
+    terraform_labels       = {
+        "goog-terraform-provisioned" = "true"
+    }
+    update_time            = "2026-07-10T23:39:05.358794Z"
+
+    vulnerability_scanning_config {
+        enablement_config       = [90mnull[0m[0m
+        enablement_state        = "SCANNING_DISABLED"
+        enablement_state_reason = "API containerscanning.googleapis.com is not enabled."
+    }
+}
+
+# module.gcp.google_bigquery_dataset.analytics:
+resource "google_bigquery_dataset" "analytics" {
+    creation_time                   = 1783726745133
+    dataset_id                      = "fiberlink_analytics"
+    default_collation               = [90mnull[0m[0m
+    default_partition_expiration_ms = 0
+    default_table_expiration_ms     = 0
+    delete_contents_on_destroy      = false
+    description                     = "Repositorio analítico principal del MVP."
+    effective_labels                = {
+        "goog-terraform-provisioned" = "true"
+    }
+    etag                            = "RNtQitYhLb28ysZWA+pDAQ=="
+    friendly_name                   = "FiberLink Analytics"
+    id                              = "projects/utec-posgrado-01/datasets/fiberlink_analytics"
+    is_case_insensitive             = false
+    last_modified_time              = 1783726745133
+    location                        = "us-central1"
+    max_time_travel_hours           = "168"
+    project                         = "utec-posgrado-01"
+    self_link                       = "https://bigquery.googleapis.com/bigquery/v2/projects/utec-posgrado-01/datasets/fiberlink_analytics"
+    storage_billing_model           = [90mnull[0m[0m
+    terraform_labels                = {
+        "goog-terraform-provisioned" = "true"
+    }
+
+    access {
+        domain         = [90mnull[0m[0m
+        group_by_email = [90mnull[0m[0m
+        iam_member     = [90mnull[0m[0m
+        role           = "OWNER"
+        special_group  = [90mnull[0m[0m
+        user_by_email  = "mgbaute.nw@gmail.com"
+    }
+    access {
+        domain         = [90mnull[0m[0m
+        group_by_email = [90mnull[0m[0m
+        iam_member     = [90mnull[0m[0m
+        role           = "OWNER"
+        special_group  = "projectOwners"
+        user_by_email  = [90mnull[0m[0m
+    }
+    access {
+        domain         = [90mnull[0m[0m
+        group_by_email = [90mnull[0m[0m
+        iam_member     = [90mnull[0m[0m
+        role           = "READER"
+        special_group  = "projectReaders"
+        user_by_email  = [90mnull[0m[0m
+    }
+    access {
+        domain         = [90mnull[0m[0m
+        group_by_email = [90mnull[0m[0m
+        iam_member     = [90mnull[0m[0m
+        role           = "WRITER"
+        special_group  = "projectWriters"
+        user_by_email  = [90mnull[0m[0m
+    }
+}
+
+# module.gcp.google_bigquery_table.integration_events:
+resource "google_bigquery_table" "integration_events" {
+    creation_time                = 1783726745725
+    dataset_id                   = "fiberlink_analytics"
+    deletion_protection          = false
+    description                  = [90mnull[0m[0m
+    effective_labels             = {
+        "goog-terraform-provisioned" = "true"
+    }
+    etag                         = "kEG8aZZNtByxN25IGLFMrA=="
+    expiration_time              = 0
+    friendly_name                = [90mnull[0m[0m
+    generated_schema_columns     = [90mnull[0m[0m
+    id                           = "projects/utec-posgrado-01/datasets/fiberlink_analytics/tables/integration_events"
+    ignore_auto_generated_schema = false
+    last_modified_time           = 1783726745848
+    location                     = "us-central1"
+    max_staleness                = [90mnull[0m[0m
+    num_bytes                    = 0
+    num_long_term_bytes          = 0
+    num_rows                     = 0
+    project                      = "utec-posgrado-01"
+    require_partition_filter     = false
+    schema                       = jsonencode(
+        [
+            {
+                mode = "REQUIRED"
+                name = "event_id"
+                type = "STRING"
+            },
+            {
+                mode = "REQUIRED"
+                name = "correlation_id"
+                type = "STRING"
+            },
+            {
+                mode = "REQUIRED"
+                name = "event_source"
+                type = "STRING"
+            },
+            {
+                mode = "REQUIRED"
+                name = "event_type"
+                type = "STRING"
+            },
+            {
+                mode = "NULLABLE"
+                name = "payload"
+                type = "STRING"
+            },
+            {
+                mode = "REQUIRED"
+                name = "event_timestamp"
+                type = "TIMESTAMP"
+            },
+        ]
+    )
+    self_link                    = "https://bigquery.googleapis.com/bigquery/v2/projects/utec-posgrado-01/datasets/fiberlink_analytics/tables/integration_events"
+    table_id                     = "integration_events"
+    terraform_labels             = {
+        "goog-terraform-provisioned" = "true"
+    }
+    type                         = "TABLE"
+}
+
+# module.gcp.google_cloud_run_v2_service.main:
+resource "google_cloud_run_v2_service" "main" {
+    client                  = [90mnull[0m[0m
+    client_version          = [90mnull[0m[0m
+    conditions              = [
+        {
+            execution_reason     = [90mnull[0m[0m
+            last_transition_time = "2026-07-10T23:39:21.180256Z"
+            message              = [90mnull[0m[0m
+            reason               = [90mnull[0m[0m
+            revision_reason      = [90mnull[0m[0m
+            severity             = [90mnull[0m[0m
+            state                = "CONDITION_SUCCEEDED"
+            type                 = "RoutesReady"
+        },
+        {
+            execution_reason     = [90mnull[0m[0m
+            last_transition_time = "2026-07-10T23:39:17.850952Z"
+            message              = [90mnull[0m[0m
+            reason               = [90mnull[0m[0m
+            revision_reason      = [90mnull[0m[0m
+            severity             = [90mnull[0m[0m
+            state                = "CONDITION_SUCCEEDED"
+            type                 = "ConfigurationsReady"
+        },
+    ]
+    create_time             = "2026-07-10T23:39:16.731585Z"
+    creator                 = "mgbaute.nw@gmail.com"
+    delete_time             = [90mnull[0m[0m
+    deletion_protection     = true
+    description             = [90mnull[0m[0m
+    effective_annotations   = {}
+    effective_labels        = {
+        "goog-terraform-provisioned" = "true"
+    }
+    etag                    = "\"CKSFxtIGEOiz7NwC/cHJvamVjdHMvdXRlYy1wb3NncmFkby0wMS9sb2NhdGlvbnMvdXMtY2VudHJhbDEvc2VydmljZXMvbXMtZXZlbnRvcy1uZWdvY2lv\""
+    expire_time             = [90mnull[0m[0m
+    generation              = "1"
+    id                      = "projects/utec-posgrado-01/locations/us-central1/services/ms-eventos-negocio"
+    ingress                 = "INGRESS_TRAFFIC_ALL"
+    invoker_iam_disabled    = false
+    last_modifier           = "mgbaute.nw@gmail.com"
+    latest_created_revision = "projects/utec-posgrado-01/locations/us-central1/services/ms-eventos-negocio/revisions/ms-eventos-negocio-00001-zlv"
+    latest_ready_revision   = "projects/utec-posgrado-01/locations/us-central1/services/ms-eventos-negocio/revisions/ms-eventos-negocio-00001-zlv"
+    launch_stage            = "GA"
+    location                = "us-central1"
+    name                    = "ms-eventos-negocio"
+    observed_generation     = "1"
+    project                 = "utec-posgrado-01"
+    reconciling             = false
+    terminal_condition      = [
+        {
+            execution_reason     = [90mnull[0m[0m
+            last_transition_time = "2026-07-10T23:39:21.223640Z"
+            message              = [90mnull[0m[0m
+            reason               = [90mnull[0m[0m
+            revision_reason      = [90mnull[0m[0m
+            severity             = [90mnull[0m[0m
+            state                = "CONDITION_SUCCEEDED"
+            type                 = "Ready"
+        },
+    ]
+    terraform_labels        = {
+        "goog-terraform-provisioned" = "true"
+    }
+    traffic_statuses        = [
+        {
+            percent  = 100
+            revision = [90mnull[0m[0m
+            tag      = [90mnull[0m[0m
+            type     = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+            uri      = [90mnull[0m[0m
+        },
+    ]
+    uid                     = "c2a941b2-ae0f-4a7b-817b-89121eb0feb0"
+    update_time             = "2026-07-10T23:39:16.731585Z"
+    uri                     = "https://ms-eventos-negocio-3lvglkfz4a-uc.a.run.app"
+    urls                    = [
+        "https://ms-eventos-negocio-949052388233.us-central1.run.app",
+        "https://ms-eventos-negocio-3lvglkfz4a-uc.a.run.app",
+    ]
+
+    scaling {
+        manual_instance_count = 0
+        min_instance_count    = 0
+        scaling_mode          = [90mnull[0m[0m
+    }
+
+    template {
+        encryption_key                   = [90mnull[0m[0m
+        execution_environment            = [90mnull[0m[0m
+        gpu_zonal_redundancy_disabled    = false
+        max_instance_request_concurrency = 80
+        revision                         = [90mnull[0m[0m
+        service_account                  = "flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+        session_affinity                 = false
+        timeout                          = "300s"
+
+        containers {
+            base_image_uri = [90mnull[0m[0m
+            build_info     = []
+            image          = "us-docker.pkg.dev/cloudrun/container/hello"
+            name           = [90mnull[0m[0m
+            working_dir    = [90mnull[0m[0m
+
+            ports {
+                container_port = 8080
+                name           = "http1"
+            }
+
+            resources {
+                cpu_idle          = true
+                limits            = {
+                    "cpu"    = "1000m"
+                    "memory" = "512Mi"
+                }
+                startup_cpu_boost = false
+            }
+
+            startup_probe {
+                failure_threshold     = 1
+                initial_delay_seconds = 0
+                period_seconds        = 240
+                timeout_seconds       = 240
+
+                tcp_socket {
+                    port = 8080
+                }
+            }
+        }
+    }
+
+    traffic {
+        percent  = 100
+        revision = [90mnull[0m[0m
+        tag      = [90mnull[0m[0m
+        type     = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+    }
+}
+
+# module.gcp.google_project_iam_member.bigquery_editor:
+resource "google_project_iam_member" "bigquery_editor" {
+    etag    = "BwZWSkBOIPI="
+    id      = "utec-posgrado-01/roles/bigquery.dataEditor/serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    member  = "serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    project = "utec-posgrado-01"
+    role    = "roles/bigquery.dataEditor"
+}
+
+# module.gcp.google_project_iam_member.logging_writer:
+resource "google_project_iam_member" "logging_writer" {
+    etag    = "BwZWSj/xvkA="
+    id      = "utec-posgrado-01/roles/logging.logWriter/serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    member  = "serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    project = "utec-posgrado-01"
+    role    = "roles/logging.logWriter"
+}
+
+# module.gcp.google_project_iam_member.pubsub_publisher:
+resource "google_project_iam_member" "pubsub_publisher" {
+    etag    = "BwZWSj/xvkA="
+    id      = "utec-posgrado-01/roles/pubsub.publisher/serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    member  = "serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    project = "utec-posgrado-01"
+    role    = "roles/pubsub.publisher"
+}
+
+# module.gcp.google_project_iam_member.pubsub_subscriber:
+resource "google_project_iam_member" "pubsub_subscriber" {
+    etag    = "BwZWSj/xvkA="
+    id      = "utec-posgrado-01/roles/pubsub.subscriber/serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    member  = "serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    project = "utec-posgrado-01"
+    role    = "roles/pubsub.subscriber"
+}
+
+# module.gcp.google_pubsub_subscription.integration:
+resource "google_pubsub_subscription" "integration" {
+    ack_deadline_seconds         = 20
+    effective_labels             = {
+        "goog-terraform-provisioned" = "true"
+    }
+    enable_exactly_once_delivery = false
+    enable_message_ordering      = false
+    filter                       = [90mnull[0m[0m
+    id                           = "projects/utec-posgrado-01/subscriptions/flk-dev-integration-sub"
+    message_retention_duration   = "604800s"
+    name                         = "flk-dev-integration-sub"
+    project                      = "utec-posgrado-01"
+    retain_acked_messages        = false
+    terraform_labels             = {
+        "goog-terraform-provisioned" = "true"
+    }
+    topic                        = "projects/utec-posgrado-01/topics/flk-dev-integration-topic"
+
+    expiration_policy {
+        ttl = "2678400s"
+    }
+}
+
+# module.gcp.google_pubsub_topic.integration:
+resource "google_pubsub_topic" "integration" {
+    effective_labels           = {
+        "goog-terraform-provisioned" = "true"
+    }
+    id                         = "projects/utec-posgrado-01/topics/flk-dev-integration-topic"
+    kms_key_name               = [90mnull[0m[0m
+    message_retention_duration = [90mnull[0m[0m
+    name                       = "flk-dev-integration-topic"
+    project                    = "utec-posgrado-01"
+    terraform_labels           = {
+        "goog-terraform-provisioned" = "true"
+    }
+}
+
+# module.gcp.google_service_account.mvp:
+resource "google_service_account" "mvp" {
+    account_id   = "flk-dev-mvp"
+    description  = "Cuenta de servicio utilizada por los microservicios del MVP."
+    disabled     = false
+    display_name = "FiberLink MVP Service Account"
+    email        = "flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    id           = "projects/utec-posgrado-01/serviceAccounts/flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    member       = "serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    name         = "projects/utec-posgrado-01/serviceAccounts/flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com"
+    project      = "utec-posgrado-01"
+    unique_id    = "106307859740982654081"
+}
+
+
+Outputs:
+
+azure_log_analytics_workspace_id = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.OperationalInsights/workspaces/workspace-rgariaautewQvc"
+azure_log_analytics_workspace_name = "workspace-rgariaautewQvc"
+azure_resource_group_location = "eastus"
+azure_resource_group_name = "rg_Maria_Baute"

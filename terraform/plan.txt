@@ -1,0 +1,181 @@
+module.gcp.google_service_account.mvp: Refreshing state... [id=projects/utec-posgrado-01/serviceAccounts/flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com]
+module.gcp.google_pubsub_topic.integration: Refreshing state... [id=projects/utec-posgrado-01/topics/flk-dev-integration-topic]
+module.gcp.google_artifact_registry_repository.containers: Refreshing state... [id=projects/utec-posgrado-01/locations/us-central1/repositories/flk-dev-containers]
+module.gcp.google_bigquery_dataset.analytics: Refreshing state... [id=projects/utec-posgrado-01/datasets/fiberlink_analytics]
+module.gcp.google_project_iam_member.logging_writer: Refreshing state... [id=utec-posgrado-01/roles/logging.logWriter/serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com]
+module.gcp.google_project_iam_member.bigquery_editor: Refreshing state... [id=utec-posgrado-01/roles/bigquery.dataEditor/serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com]
+module.gcp.google_project_iam_member.pubsub_publisher: Refreshing state... [id=utec-posgrado-01/roles/pubsub.publisher/serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com]
+module.gcp.google_project_iam_member.pubsub_subscriber: Refreshing state... [id=utec-posgrado-01/roles/pubsub.subscriber/serviceAccount:flk-dev-mvp@utec-posgrado-01.iam.gserviceaccount.com]
+module.gcp.google_cloud_run_v2_service.main: Refreshing state... [id=projects/utec-posgrado-01/locations/us-central1/services/ms-eventos-negocio]
+module.gcp.google_pubsub_subscription.integration: Refreshing state... [id=projects/utec-posgrado-01/subscriptions/flk-dev-integration-sub]
+module.gcp.google_bigquery_table.integration_events: Refreshing state... [id=projects/utec-posgrado-01/datasets/fiberlink_analytics/tables/integration_events]
+module.azure.data.azurerm_resource_group.main: Reading...
+module.azure.data.azurerm_client_config.current: Reading...
+module.azure.data.azurerm_client_config.current: Read complete after 0s [id=Y2xpZW50Q29uZmlncy9jbGllbnRJZD0wNGIwNzc5NS04ZGRiLTQ2MWEtYmJlZS0wMmY5ZTFiZjdiNDY7b2JqZWN0SWQ9YWE2YmY3YzEtMzI3Yi00OTIxLTg3ZTEtMWVjYmIyNDA1ZDcxO3N1YnNjcmlwdGlvbklkPTA4OGI5MTY4LWZkZDUtNDI4MC04M2RlLTAyYWFlZThiOWRhZjt0ZW5hbnRJZD04YTU5NjMwMS1jYTM0LTQ4NGQtYjgyMy1iMzMwMDMwZTUzOWY=]
+module.azure.data.azurerm_resource_group.main: Read complete after 1s [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute]
+module.azure.azurerm_servicebus_namespace.main: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ServiceBus/namespaces/flk-dev-bus]
+module.azure.azurerm_key_vault.main: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.KeyVault/vaults/flkdevkv]
+module.azure.azurerm_mssql_server.main: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.Sql/servers/flk-dev-sqlsrv]
+module.azure.azurerm_api_management.main: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ApiManagement/service/flk-dev-apim]
+module.azure.azurerm_user_assigned_identity.mvp: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ManagedIdentity/userAssignedIdentities/flk-dev-identity]
+module.azure.data.azurerm_log_analytics_workspace.main: Reading...
+module.azure.data.azurerm_log_analytics_workspace.main: Read complete after 0s [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.OperationalInsights/workspaces/workspace-rgariaautewQvc]
+module.azure.azurerm_container_app_environment.main: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.App/managedEnvironments/flk-dev-acae]
+module.azure.azurerm_role_assignment.keyvault_secrets_user: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.KeyVault/vaults/flkdevkv/providers/Microsoft.Authorization/roleAssignments/ed0b388c-09c5-223a-92f7-47343ccc0a3f]
+module.azure.azurerm_mssql_firewall_rule.azure_services: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.Sql/servers/flk-dev-sqlsrv/firewallRules/AllowAzureServices]
+module.azure.azurerm_mssql_database.main: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.Sql/servers/flk-dev-sqlsrv/databases/flk-dev-db]
+module.azure.azurerm_role_assignment.servicebus_receiver: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ServiceBus/namespaces/flk-dev-bus/providers/Microsoft.Authorization/roleAssignments/057aec8a-b8c2-7b6a-7055-729e0531b510]
+module.azure.azurerm_role_assignment.servicebus_sender: Refreshing state... [id=/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.ServiceBus/namespaces/flk-dev-bus/providers/Microsoft.Authorization/roleAssignments/2c71ce45-c8e7-efd1-c3aa-cf7344d0a1be]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # module.azure.azurerm_key_vault.main will be updated in-place
+  ~ resource "azurerm_key_vault" "main" {
+        id                              = "/subscriptions/088b9168-fdd5-4280-83de-02aaee8b9daf/resourceGroups/rg_Maria_Baute/providers/Microsoft.KeyVault/vaults/flkdevkv"
+        name                            = "flkdevkv"
+      ~ rbac_authorization_enabled      = false -> true
+        tags                            = {
+            "AdministradoPor" = "Terraform"
+            "Ambiente"        = "dev"
+            "Curso"           = "Arquitectura de Soluciones Multicloud"
+            "Grupo"           = "Grupo-V"
+            "Proyecto"        = "FiberLink-MVP"
+            "Responsable"     = "OPS"
+        }
+        # (13 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.gcp.google_cloud_run_v2_service.main must be replaced
+-/+ resource "google_cloud_run_v2_service" "main" {
+      - annotations             = {} -> null
+      ~ conditions              = [
+          - {
+              - last_transition_time = "2026-07-10T23:39:21.180256Z"
+              - state                = "CONDITION_SUCCEEDED"
+              - type                 = "RoutesReady"
+                # (5 unchanged attributes hidden)
+            },
+          - {
+              - last_transition_time = "2026-07-10T23:39:17.850952Z"
+              - state                = "CONDITION_SUCCEEDED"
+              - type                 = "ConfigurationsReady"
+                # (5 unchanged attributes hidden)
+            },
+        ] -> (known after apply)
+      ~ create_time             = "2026-07-10T23:39:16.731585Z" -> (known after apply)
+      ~ creator                 = "mgbaute.nw@gmail.com" -> (known after apply)
+      - custom_audiences        = [] -> null
+      + delete_time             = (known after apply)
+      ~ effective_annotations   = {} -> (known after apply)
+      ~ etag                    = "\"CKSFxtIGEOiz7NwC/cHJvamVjdHMvdXRlYy1wb3NncmFkby0wMS9sb2NhdGlvbnMvdXMtY2VudHJhbDEvc2VydmljZXMvbXMtZXZlbnRvcy1uZWdvY2lv\"" -> (known after apply)
+      + expire_time             = (known after apply)
+      ~ generation              = "1" -> (known after apply)
+      ~ id                      = "projects/utec-posgrado-01/locations/us-central1/services/ms-eventos-negocio" -> (known after apply)
+      - invoker_iam_disabled    = false -> null
+      - labels                  = {} -> null
+      ~ last_modifier           = "mgbaute.nw@gmail.com" -> (known after apply)
+      ~ latest_created_revision = "projects/utec-posgrado-01/locations/us-central1/services/ms-eventos-negocio/revisions/ms-eventos-negocio-00001-zlv" -> (known after apply)
+      ~ latest_ready_revision   = "projects/utec-posgrado-01/locations/us-central1/services/ms-eventos-negocio/revisions/ms-eventos-negocio-00001-zlv" -> (known after apply)
+      ~ launch_stage            = "GA" -> (known after apply)
+      ~ name                    = "ms-eventos-negocio" -> "flk-dev-ms-eventos-negocio" # forces replacement
+      ~ observed_generation     = "1" -> (known after apply)
+      ~ reconciling             = false -> (known after apply)
+      ~ terminal_condition      = [
+          - {
+              - last_transition_time = "2026-07-10T23:39:21.223640Z"
+              - state                = "CONDITION_SUCCEEDED"
+              - type                 = "Ready"
+                # (5 unchanged attributes hidden)
+            },
+        ] -> (known after apply)
+      ~ traffic_statuses        = [
+          - {
+              - percent  = 100
+              - type     = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
+                # (3 unchanged attributes hidden)
+            },
+        ] -> (known after apply)
+      ~ uid                     = "c2a941b2-ae0f-4a7b-817b-89121eb0feb0" -> (known after apply)
+      ~ update_time             = "2026-07-10T23:39:16.731585Z" -> (known after apply)
+      ~ uri                     = "https://ms-eventos-negocio-3lvglkfz4a-uc.a.run.app" -> (known after apply)
+      ~ urls                    = [
+          - "https://ms-eventos-negocio-949052388233.us-central1.run.app",
+          - "https://ms-eventos-negocio-3lvglkfz4a-uc.a.run.app",
+        ] -> (known after apply)
+        # (9 unchanged attributes hidden)
+
+      - scaling {
+          - manual_instance_count = 0 -> null
+          - min_instance_count    = 0 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      ~ template {
+          - annotations                      = {} -> null
+          - gpu_zonal_redundancy_disabled    = false -> null
+          - labels                           = {} -> null
+          ~ max_instance_request_concurrency = 80 -> (known after apply)
+          - session_affinity                 = false -> null
+          ~ timeout                          = "300s" -> (known after apply)
+            # (4 unchanged attributes hidden)
+
+          ~ containers {
+              - args           = [] -> null
+              ~ build_info     = [] -> (known after apply)
+              - command        = [] -> null
+              - depends_on     = [] -> null
+                name           = null
+                # (3 unchanged attributes hidden)
+
+              ~ ports {
+                  ~ name           = "http1" -> (known after apply)
+                    # (1 unchanged attribute hidden)
+                }
+
+              ~ resources (known after apply)
+              - resources {
+                  - cpu_idle          = true -> null
+                  - limits            = {
+                      - "cpu"    = "1000m"
+                      - "memory" = "512Mi"
+                    } -> null
+                  - startup_cpu_boost = false -> null
+                }
+
+              ~ startup_probe (known after apply)
+              - startup_probe {
+                  - failure_threshold     = 1 -> null
+                  - initial_delay_seconds = 0 -> null
+                  - period_seconds        = 240 -> null
+                  - timeout_seconds       = 240 -> null
+
+                  - tcp_socket {
+                      - port = 8080 -> null
+                    }
+                }
+            }
+
+          ~ scaling (known after apply)
+        }
+
+      ~ traffic (known after apply)
+      - traffic {
+          - percent  = 100 -> null
+          - type     = "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST" -> null
+            # (2 unchanged attributes hidden)
+        }
+    }
+
+Plan: 1 to add, 1 to change, 1 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
