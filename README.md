@@ -145,7 +145,7 @@ El despliegue será completamente reproducible mediante IaC.
 
 # Automatización
 
-La ejecución del despliegue será orquestada mediante GitHub Actions.
+La ejecución del despliegue final será orquestada mediante GitHub Actions.
 
 El pipeline realizará:
 
