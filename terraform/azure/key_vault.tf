@@ -30,11 +30,29 @@ resource "azurerm_key_vault" "main" {
 
   sku_name = "standard"
 
-  rbac_authorization_enabled = true
+  purge_protection_enabled = false
 
-  purge_protection_enabled   = false
   soft_delete_retention_days = 7
 
   tags = var.common_tags
+
+}
+
+###############################################################################
+# Key Vault Access Policy
+###############################################################################
+
+resource "azurerm_key_vault_access_policy" "managed_identity" {
+
+  key_vault_id = azurerm_key_vault.main.id
+
+  tenant_id = data.azurerm_client_config.current.tenant_id
+
+  object_id = azurerm_user_assigned_identity.mvp.principal_id
+
+  secret_permissions = [
+    "Get",
+    "List"
+  ]
 
 }
