@@ -141,11 +141,8 @@ El despliegue será completamente reproducible mediante IaC.
 
 # Automatización
 
-<<<<<<< HEAD
-La ejecución del despliegue final será orquestada mediante GitHub Actions.
 =======
 La ejecución del despliegue será orquestada mediante GitHub Actions y sera construida para el despliegue final del mvp.
->>>>>>> 0085242 (feat(plataforma): consolidar infraestructura, APIs y seguridad del MVP)
 
 El pipeline realizará:
 
@@ -166,17 +163,9 @@ El pipeline realizará:
 
 Estado actual:
 
-<<<<<<< HEAD
-- [ ] Infraestructura Terraform
-- [ ] Microservicios
-- [ ] APIs Mock
-- [ ] GitHub Actions
-- [ ] Pruebas Integradas
-- [ ] MVP Operativo
-=======
 - [X] Infraestructura Terraform
 - [X] Microservicios
 - [X] APIs Mock
 - [X] Pruebas Integradas
 - [X] MVP Operativo
->>>>>>> 0085242 (feat(plataforma): consolidar infraestructura, APIs y seguridad del MVP)
+
