@@ -102,10 +102,6 @@ fiberlink-multicloud-mvp/
 │   ├── ms-observabilidad-analitica/
 │   └── ms-notificaciones/
 │
-├── mocks/
-│   ├── oss/
-│   └── nms/
-│
 ├── .github/
 │   └── workflows/
 │
@@ -145,7 +141,11 @@ El despliegue será completamente reproducible mediante IaC.
 
 # Automatización
 
+<<<<<<< HEAD
 La ejecución del despliegue final será orquestada mediante GitHub Actions.
+=======
+La ejecución del despliegue será orquestada mediante GitHub Actions y sera construida para el despliegue final del mvp.
+>>>>>>> 0085242 (feat(plataforma): consolidar infraestructura, APIs y seguridad del MVP)
 
 El pipeline realizará:
 
@@ -160,26 +160,23 @@ El pipeline realizará:
 
 ---
 
-# Equipo
-
-| Rol | Responsabilidad |
-|------|-----------------|
-| Arquitectura | Diseño de la solución y C4 Model |
-| OPS | Terraform e Infraestructura como Código |
-| Desarrollo | Microservicios y APIs Mock |
-| DevOps | GitHub Actions y CI/CD |
-
----
-
 # Estado del Proyecto
 
 **Versión:** MVP v1.0
 
 Estado actual:
 
+<<<<<<< HEAD
 - [ ] Infraestructura Terraform
 - [ ] Microservicios
 - [ ] APIs Mock
 - [ ] GitHub Actions
 - [ ] Pruebas Integradas
 - [ ] MVP Operativo
+=======
+- [X] Infraestructura Terraform
+- [X] Microservicios
+- [X] APIs Mock
+- [X] Pruebas Integradas
+- [X] MVP Operativo
+>>>>>>> 0085242 (feat(plataforma): consolidar infraestructura, APIs y seguridad del MVP)

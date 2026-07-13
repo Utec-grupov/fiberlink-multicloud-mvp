@@ -10,11 +10,14 @@
     "ghcr.io/devcontainers/features/azure-cli:1": {}
   },
 
+  "postCreateCommand": "curl -fsSL https://sdk.cloud.google.com | bash -s -- --disable-prompts && echo 'source $HOME/google-cloud-sdk/path.bash.inc' >> ~/.bashrc",
+
   "customizations": {
     "vscode": {
       "extensions": [
         "HashiCorp.terraform",
-        "ms-azuretools.vscode-azureterraform"
+        "ms-azuretools.vscode-azureterraform",
+        "GoogleCloudTools.cloudcode"
       ]
     }
   }

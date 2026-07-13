@@ -56,3 +56,31 @@ resource "azurerm_key_vault_access_policy" "managed_identity" {
   ]
 
 }
+###############################################################################
+# Key Vault Access Policy - Administrator
+###############################################################################
+
+resource "azurerm_key_vault_access_policy" "administrator" {
+
+  key_vault_id = azurerm_key_vault.main.id
+
+  tenant_id = data.azurerm_client_config.current.tenant_id
+
+  object_id = data.azurerm_client_config.current.object_id
+
+  secret_permissions = [
+    "Get",
+    "List",
+    "Set",
+    "Delete"
+  ]
+
+  key_permissions = [
+    "Get",
+    "List",
+    "Create",
+    "Delete",
+    "Update"
+  ]
+
+}
