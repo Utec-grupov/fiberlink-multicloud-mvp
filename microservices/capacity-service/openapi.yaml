@@ -1,0 +1,358 @@
+openapi: 3.0.3
+
+info:
+  title: Capacity Validation Service API
+  version: 1.0.0
+  description: >
+    API para validar la capacidad técnica de un nodo de red y realizar
+    reservas temporales de puertos para instalaciones.
+
+servers:
+  - url: https://{host}
+    variables:
+      host:
+        default: localhost:8080
+
+tags:
+  - name: Capacity
+    description: Validación de capacidad técnica
+  - name: Port Reservation
+    description: Reserva temporal de puertos
+
+paths:
+
+  /health:
+    get:
+      summary: Health Check
+      operationId: healthCheck
+      tags:
+        - Capacity
+      responses:
+        '200':
+          description: Servicio disponible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /api/v1/capacity/validate:
+    post:
+      tags:
+        - Capacity
+      summary: Validar capacidad técnica de nodo
+      description: >
+        Verifica la disponibilidad de capacidad del nodo, CTO y puertos
+        recomendados para una nueva instalación.
+
+      operationId: validateCapacity
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapacityValidationRequest'
+
+      responses:
+        '200':
+          description: Validación realizada correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapacityValidationResponse'
+
+        '400':
+          description: Solicitud inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/v1/port-reservations:
+    post:
+      tags:
+        - Port Reservation
+      summary: Reservar puerto temporal
+      description: Reserva temporalmente un puerto para una orden de instalación.
+
+      operationId: reservePort
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PortReservationRequest'
+
+      responses:
+        '200':
+          description: Reserva creada correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortReservationResponse'
+
+        '400':
+          description: Solicitud inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+
+  schemas:
+
+    #####################################
+    # Health
+    #####################################
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: UP
+        service:
+          type: string
+          example: capacity-validation-service
+        timestamp:
+          type: string
+          format: date-time
+
+    #####################################
+    # Capacity Validation
+    #####################################
+
+    CapacityValidationRequest:
+      type: object
+      required:
+        - correlationId
+        - nodeId
+        - ctoId
+        - serviceType
+        - bandwidthRequired
+        - requesterId
+
+      properties:
+
+        correlationId:
+          type: string
+          example: CORR-1001
+
+        nodeId:
+          type: string
+          example: NODE-001
+
+        ctoId:
+          type: string
+          example: CTO-101
+
+        serviceType:
+          type: string
+          enum:
+            - RESIDENTIAL
+            - ENTERPRISE
+
+        bandwidthRequired:
+          type: number
+          example: 500
+
+        requesterId:
+          type: string
+          example: provisioning-system
+
+    CapacityValidationResponse:
+      type: object
+
+      properties:
+
+        correlationId:
+          type: string
+          example: CORR-1001
+
+        capacity:
+          $ref: '#/components/schemas/Capacity'
+
+        responseTime:
+          type: string
+          example: 12 ms
+
+    Capacity:
+      type: object
+
+      properties:
+
+        available:
+          type: boolean
+          example: true
+
+        node:
+          $ref: '#/components/schemas/NodeCapacity'
+
+        cto:
+          $ref: '#/components/schemas/CtoCapacity'
+
+        recommendedPorts:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecommendedPort'
+
+    NodeCapacity:
+      type: object
+
+      properties:
+
+        id:
+          type: string
+          example: NODE-001
+
+        currentLoad:
+          type: number
+          description: Porcentaje de utilización
+          example: 65
+
+        maxCapacity:
+          type: number
+          description: Mbps
+          example: 10000
+
+        availableCapacity:
+          type: number
+          description: Mbps
+          example: 3500
+
+    CtoCapacity:
+      type: object
+
+      properties:
+
+        id:
+          type: string
+          example: CTO-101
+
+        availablePorts:
+          type: integer
+          example: 8
+
+        totalPorts:
+          type: integer
+          example: 16
+
+        technology:
+          type: string
+          example: XGS-PON
+
+    RecommendedPort:
+      type: object
+
+      properties:
+
+        portId:
+          type: string
+          example: PORT-001
+
+        splitterId:
+          type: string
+          example: SPLITTER-01
+
+        signalQuality:
+          type: string
+          enum:
+            - EXCELLENT
+            - GOOD
+            - FAIR
+
+    #####################################
+    # Port Reservation
+    #####################################
+
+    PortReservationRequest:
+      type: object
+
+      required:
+        - correlationId
+        - portId
+        - orderId
+        - customerId
+        - reservationDuration
+        - requesterId
+
+      properties:
+
+        correlationId:
+          type: string
+          example: CORR-2001
+
+        portId:
+          type: string
+          example: PORT-001
+
+        orderId:
+          type: string
+          example: ORD-5001
+
+        customerId:
+          type: string
+          example: CUST-10001
+
+        reservationDuration:
+          type: integer
+          description: Horas
+          example: 24
+
+        requesterId:
+          type: string
+          example: provisioning-system
+
+    PortReservationResponse:
+      type: object
+
+      properties:
+
+        correlationId:
+          type: string
+          example: CORR-2001
+
+        reservation:
+          $ref: '#/components/schemas/Reservation'
+
+    Reservation:
+      type: object
+
+      properties:
+
+        reservationId:
+          type: string
+          example: 3d45a63b-a5d2-42a7-bb2d-64eb7c99ef0d
+
+        portId:
+          type: string
+          example: PORT-001
+
+        status:
+          type: string
+          enum:
+            - RESERVED
+            - FAILED
+
+        expiresAt:
+          type: string
+          format: date-time
+
+        orderId:
+          type: string
+          example: ORD-5001
+
+    #####################################
+    # Error
+    #####################################
+
+    ErrorResponse:
+      type: object
+
+      properties:
+
+        error:
+          type: string
+          example: El campo "correlationId" es obligatorio.

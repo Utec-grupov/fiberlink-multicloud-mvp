@@ -1,0 +1,247 @@
+openapi: 3.0.3
+info:
+  title: Network Topology Service API
+  description: >
+    API para consultar la topología de red desde el inventario Oracle (Oracle UIM o equivalente).
+    Permite obtener la estructura y relaciones de un recurso de red.
+  version: 1.0.0
+  contact:
+    name: Telecom Architecture Team
+
+servers:
+  - url: https://apiequipment.proudbeach-0c95e7cc.eastus.azurecontainerapps.io
+    description: Azure Container Apps
+
+paths:
+  /api/v1/network-topology/query:
+    post:
+      tags:
+        - Network Topology
+      summary: Consultar Topología de Red
+      description: |
+        Consulta la topología de un recurso de infraestructura
+        (NODE, OLT, CTO, SPLITTER o FIBER_SEGMENT) desde el inventario Oracle.
+      operationId: queryNetworkTopology
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopologyRequest'
+            example:
+              correlationId: CORR-12345
+              topologyRequest:
+                resourceType: NODE
+                resourceId: NODE-001
+                includeParents: true
+                includeChildren: true
+                includeAttributes: true
+                maxDepth: 5
+              requesterId: incident-correlation-service
+
+      responses:
+        "200":
+          description: Topología obtenida correctamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopologyResponse'
+              example:
+                correlationId: CORR-12345
+                networkTopology:
+                  resource:
+                    id: NODE-001
+                    type: NODE
+                    name: Nodo Lima Sur
+                    status: ACTIVE
+                    location: Lima
+                  parents:
+                    - id: OLT-001
+                      type: OLT
+                      name: OLT Chorrillos
+                      status: ACTIVE
+                  children:
+                    - id: CTO-101
+                      type: CTO
+                      status: ACTIVE
+                    - id: CTO-102
+                      type: CTO
+                      status: ACTIVE
+                  relationships:
+                    - source: OLT-001
+                      target: NODE-001
+                      relationshipType: CONNECTED_TO
+                    - source: NODE-001
+                      target: CTO-101
+                      relationshipType: SERVES
+                    - source: NODE-001
+                      target: CTO-102
+                      relationshipType: SERVES
+                  metadata:
+                    generatedAt: "2026-07-12T17:22:10.081Z"
+                    source: Oracle Inventory (Mock)
+                    requesterId: incident-correlation-service
+                    includeAttributes: true
+                    maxDepth: 5
+
+        "400":
+          description: Solicitud inválida.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                error: Los campos resourceType y resourceId son obligatorios.
+
+        "500":
+          description: Error interno del servicio.
+
+components:
+
+  schemas:
+
+    TopologyRequest:
+      type: object
+      required:
+        - correlationId
+        - topologyRequest
+        - requesterId
+      properties:
+        correlationId:
+          type: string
+          example: CORR-12345
+
+        topologyRequest:
+          type: object
+          required:
+            - resourceType
+            - resourceId
+          properties:
+            resourceType:
+              type: string
+              enum:
+                - NODE
+                - OLT
+                - CTO
+                - SPLITTER
+                - FIBER_SEGMENT
+              example: NODE
+
+            resourceId:
+              type: string
+              example: NODE-001
+
+            includeParents:
+              type: boolean
+              default: true
+
+            includeChildren:
+              type: boolean
+              default: true
+
+            includeAttributes:
+              type: boolean
+              default: true
+
+            maxDepth:
+              type: integer
+              minimum: 1
+              maximum: 10
+              default: 5
+
+        requesterId:
+          type: string
+          example: incident-correlation-service
+
+    TopologyResponse:
+      type: object
+      properties:
+        correlationId:
+          type: string
+
+        networkTopology:
+          type: object
+          properties:
+
+            resource:
+              $ref: '#/components/schemas/NetworkResource'
+
+            parents:
+              type: array
+              items:
+                $ref: '#/components/schemas/NetworkResource'
+
+            children:
+              type: array
+              items:
+                $ref: '#/components/schemas/ChildResource'
+
+            relationships:
+              type: array
+              items:
+                $ref: '#/components/schemas/Relationship'
+
+            metadata:
+              $ref: '#/components/schemas/Metadata'
+
+    NetworkResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        location:
+          type: string
+
+    ChildResource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+
+    Relationship:
+      type: object
+      properties:
+        source:
+          type: string
+
+        target:
+          type: string
+
+        relationshipType:
+          type: string
+
+    Metadata:
+      type: object
+      properties:
+        generatedAt:
+          type: string
+          format: date-time
+
+        source:
+          type: string
+
+        requesterId:
+          type: string
+
+        includeAttributes:
+          type: boolean
+
+        maxDepth:
+          type: integer
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string

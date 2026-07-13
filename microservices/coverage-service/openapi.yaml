@@ -1,0 +1,205 @@
+openapi: 3.0.3
+
+info:
+  title: Coverage Service API
+  version: 1.0.0
+  description: API para consultar la cobertura de fibra óptica en una dirección específica.
+
+servers:
+  - url: https://{host}
+    variables:
+      host:
+        default: localhost:8080
+
+tags:
+  - name: Coverage
+    description: Operaciones de consulta de cobertura
+
+paths:
+
+  /health:
+    get:
+      tags:
+        - Coverage
+      summary: Health Check
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Servicio disponible
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /api/v1/coverage/query:
+    post:
+      tags:
+        - Coverage
+      summary: Consultar cobertura por dirección
+      description: >
+        Valida si existe cobertura de fibra óptica para una dirección
+        específica y devuelve la tecnología disponible.
+      operationId: queryCoverage
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoverageRequest'
+
+      responses:
+
+        '200':
+          description: Cobertura consultada correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoverageResponse'
+
+        '400':
+          description: Solicitud inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+
+  schemas:
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: UP
+        service:
+          type: string
+          example: coverage-service
+        timestamp:
+          type: string
+          format: date-time
+
+    CoverageRequest:
+      type: object
+      required:
+        - correlationId
+        - address
+        - requesterId
+
+      properties:
+
+        correlationId:
+          type: string
+          example: CORR-12345
+
+        requesterId:
+          type: string
+          example: sales-channel
+
+        address:
+          $ref: '#/components/schemas/Address'
+
+    Address:
+      type: object
+      required:
+        - street
+        - number
+        - neighborhood
+        - city
+        - coordinates
+
+      properties:
+
+        street:
+          type: string
+          example: Av. Los Próceres
+
+        number:
+          type: string
+          example: "1234"
+
+        neighborhood:
+          type: string
+          example: Santiago de Surco
+
+        city:
+          type: string
+          example: Lima
+
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+
+    Coordinates:
+      type: object
+      required:
+        - latitude
+        - longitude
+
+      properties:
+
+        latitude:
+          type: number
+          format: double
+          example: -12.1456
+
+        longitude:
+          type: number
+          format: double
+          example: -76.9912
+
+    CoverageResponse:
+      type: object
+      properties:
+
+        correlationId:
+          type: string
+          example: CORR-12345
+
+        coverage:
+          $ref: '#/components/schemas/Coverage'
+
+        responseTime:
+          type: string
+          example: "15 ms"
+
+    Coverage:
+      type: object
+      properties:
+
+        available:
+          type: boolean
+          example: true
+
+        technology:
+          type: string
+          enum:
+            - GPON
+            - XGS-PON
+          example: XGS-PON
+
+        maxSpeed:
+          type: integer
+          description: Velocidad máxima en Mbps
+          example: 1000
+
+        nodeId:
+          type: string
+          example: NODE-001
+
+        ctoId:
+          type: string
+          example: CTO-101
+
+        estimatedDistance:
+          type: number
+          description: Distancia estimada en metros
+          example: 87
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: El campo "correlationId" es obligatorio.

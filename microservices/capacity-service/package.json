@@ -1,0 +1,21 @@
+{
+  "name": "capacidad-service",
+  "version": "1.0.0",
+  "description": "API Capacity Validation Service con backend en SQL Server (credenciales vía Azure Key Vault)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@azure/identity": "^4.4.1",
+    "@azure/keyvault-secrets": "^4.8.0",
+    "express": "^4.19.2",
+    "mssql": "^11.0.1",
+    "@azure/monitor-opentelemetry": "^1.9.0",
+    "@opentelemetry/api": "^1.9.0"
+  }
+}
